@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Badge from '@material-ui/core/Badge';
 
 import KajiLibraryApi from '../../utils/KajiLibraryApi';
 import BookCard from '../../components/BookCard';
@@ -35,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         flexWrap: 'wrap',
         width: '90vw',
+    },
+    test: {
+        width: 50,
+        height: 50,
+        backgroundColor: 'red',
+        fontSize: "5px"
     },
 }));
 

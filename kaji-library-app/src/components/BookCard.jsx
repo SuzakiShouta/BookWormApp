@@ -28,7 +28,6 @@ const timeUnits = [
 function timeDifference(createdAt, now) {
     const diff = Math.abs((createdAt.getTime() - now.getTime()) / 1000)
     const timeUnit = timeUnits.find((t) => t.time <= diff)
-    console.log(diff, "\n", timeUnit)
     const result = timeUnit?.unit
         ? Math.floor(diff / timeUnit.time) + timeUnit.unit
         : new Date(createdAt).toString()
@@ -110,7 +109,7 @@ export default function BookCard(props) { //id引数にもらう bookのnfc id =
             <CustomBadge
                 size={20}
                 backgroundColor={book ? (book.hasReturned ? '#56f000' : '#ffb302') : "#9ea7ad"}
-                badgeContent=" "
+                badgeContent={book ? borrowedDay(book.borrowingStartDate) : ""}
             >
                 <Link to={`/bookDetail/${book?.id}`} className={classes.activeClassName}>
                     <Card
@@ -123,7 +122,6 @@ export default function BookCard(props) { //id引数にもらう bookのnfc id =
                             title="Live from space album cover"
                         />
                         <CardContent className={classes.content}>
-                            {book ? borrowedDay(book.borrowingStartDate) : ""}
                             <Typography variant="h6" align="left">
                                 {book ? book.title : <Skeleton variant="text" />}
                             </Typography>
@@ -136,7 +134,6 @@ export default function BookCard(props) { //id引数にもらう bookのnfc id =
                         </CardContent>
                     </Card>
                 </Link>
-                2週間前
             </CustomBadge>
         </div>
     );

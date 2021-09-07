@@ -5,24 +5,23 @@ import Badge from '@material-ui/core/Badge';
 
 export default function ProjectTitleForm(props) {
     const css = {
-        size: 50,
+        fontSize: "5px",
         color: "black",
-        backgroundColor: 'white',
+        backgroundColor: '#56f000',
+        badgeContent: " ",
     };
-    if (props.size) css.size = props.size;
+    if (props.size) {css.size = props.size;};
     if (props.color) css.color = props.color;
     if (props.backgroundColor) css.backgroundColor = props.backgroundColor;
+    if (props.badgeContent) css.badgeContent = props.badgeContent;
 
     const useStyles = makeStyles((theme) => ({
         customBadge: {
+            fontSize: css.fontSize,
+            borderRadius: "100%",
             "& > span": {
-                color: css.color,
-                fontSize: css.size * 0.65,
-                width: css.size,
-                height: css.size,
-                borderRadius: css.size / 2,
-                backgroundColor: css.backgroundColor,
-            },
+                backgroundColor: css.backgroundColor
+            }
         }
     }));
 
@@ -30,9 +29,13 @@ export default function ProjectTitleForm(props) {
 
     return (
         <Badge
-            overlap={props.overlap}
-            badgeContent={props.badgeContent}
+            // overlap={props.overlap}
+            badgeContent={css.badgeContent}
             className={classes.customBadge}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
         >
             {props.children}
         </Badge>
