@@ -104,12 +104,18 @@ export default function BookCard(props) { //id引数にもらう bookのnfc id =
         }
     }
 
+    const badgePosition = function (borrowingStartDate) {
+        if (borrowingStartDate != "Invalid Date") {
+            return "15px"
+        } return "0px"
+    }
+
     return (
         <div className={props.className}>
             <CustomBadge
-                size={20}
                 backgroundColor={book ? (book.hasReturned ? '#56f000' : '#ffb302') : "#9ea7ad"}
                 badgeContent={book ? borrowedDay(book.borrowingStartDate) : ""}
+                right={book ? badgePosition(book.borrowingStartDate) : ""}
             >
                 <Link to={`/bookDetail/${book?.id}`} className={classes.activeClassName}>
                     <Card
