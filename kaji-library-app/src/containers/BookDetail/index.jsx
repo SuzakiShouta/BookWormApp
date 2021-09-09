@@ -96,7 +96,9 @@ export default function BookDetail() {
     var dateFormat = require('dateformat');
     const init = React.useCallback(async () => {
         const kajiLibraryApiData = await KajiLibraryApi().books.getById(params.id);
+        console.log(kajiLibraryApiData)
         const googleBooksData = await GoogleBooksApi().books.getByIsbn(kajiLibraryApiData.isbn);
+        console.log(googleBooksData)
         const hasReturned = await KajiLibraryApi().books.hasReturnedById(params.id);
         const thumbnail = googleBooksData.items?.[0].volumeInfo.imageLinks?.thumbnail
         const textSnippet = googleBooksData.items?.[0].searchInfo?.textSnippet
